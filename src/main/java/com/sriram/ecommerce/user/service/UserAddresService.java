@@ -51,6 +51,7 @@ public class UserAddresService {
                 .orElseThrow(()->new ResourceNotFoundException("addressId not found :"+addressId));
         UserAddressDomain resposne = new UserAddressDomain();
         BeanUtils.copyProperties(address, resposne);
+
         return resposne;
     }
     @Transactional
@@ -60,7 +61,7 @@ public class UserAddresService {
         Users   user=usersRepository.findByUserId(userId)
                 .orElseThrow(()->new ResourceNotFoundException("user not found :"+userId));
         usersRepository.resetDefaultAddressByUserId(userId);
-        address.setIsDefault(true);
+        address.setDefaultAddress(true);
         userAddressRepository.save(address);
         return "default address set successfully";
     }

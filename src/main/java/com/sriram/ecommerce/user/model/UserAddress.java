@@ -34,7 +34,7 @@ public class UserAddress implements java.io.Serializable {
     private String state;
     private String country;
     private String pincode;
-    private Boolean isDefault;
+    private Boolean isDefaultAddress;
     private Timestamp createdAt;
     private ZonedDateTime updatedDate;
 
@@ -120,14 +120,13 @@ public class UserAddress implements java.io.Serializable {
         this.pincode = pincode;
     }
 
-
     @Column(name = "is_default")
-    public Boolean getIsDefault() {
-        return this.isDefault;
+    public Boolean getDefaultAddress() {
+        return isDefaultAddress;
     }
 
-    public void setIsDefault(Boolean isDefault) {
-        this.isDefault = isDefault;
+    public void setDefaultAddress(Boolean defaultAddress) {
+        isDefaultAddress = defaultAddress;
     }
 
     @Temporal(TemporalType.TIMESTAMP)

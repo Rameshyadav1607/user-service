@@ -16,6 +16,6 @@ public class UserAddressDomain {
     private String state;
     private String country;
     private String pincode;
-    private boolean isDefault;
+    private boolean isDefaultAddress;
 
 }

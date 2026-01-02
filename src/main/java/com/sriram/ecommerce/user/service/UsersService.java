@@ -81,7 +81,7 @@ public class UsersService {
                 address.setState(row.getState());
                 address.setCountry(row.getCountry());
                 address.setPincode(row.getPincode());
-                address.setDefault(row.getIsDefault());
+                address.setDefaultAddress(row.getIsDefault());
 
                 user.getUserAddressDomainList().add(address);
             }
@@ -120,7 +120,7 @@ public class UsersService {
                 address.setState(row.getState());
                 address.setCountry(row.getCountry());
                 address.setPincode(row.getPincode());
-                address.setDefault(row.getIsDefault());
+                address.setDefaultAddress(row.getIsDefault());
 
                 user.getUserAddressDomainList().add(address);
             }
