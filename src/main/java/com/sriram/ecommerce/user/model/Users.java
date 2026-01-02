@@ -42,7 +42,6 @@ public class Users implements java.io.Serializable {
     private List<UserAddress> addresses;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", unique = true, nullable = false)
     public Integer getUserId() {
         return this.userId;
