@@ -34,44 +34,23 @@ import java.util.Set;
 public class Users implements java.io.Serializable {
 
 
-    private int userId;
-    private UserStatus userStatus;
+    private Integer userId;
     private String firstName;
     private String lastName;
-    private String password;
-    private String emailId;
-    private String phoneNumner;
     private Timestamp createdAt;
     private Timestamp updatedAt;
-
     private List<UserAddress> addresses;
-    private List<Roles> roleses ;
-
-
-    @EmbeddedId
-    private UserRolesId id;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id", unique = true, nullable = false)
-    public int getUserId() {
+    public Integer getUserId() {
         return this.userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_status_id", nullable = false)
-    public UserStatus getUserStatus() {
-        return this.userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-    }
-
 
     @Column(name = "first_name", nullable = false, length = 100)
     public String getFirstName() {
@@ -82,7 +61,6 @@ public class Users implements java.io.Serializable {
         this.firstName = firstName;
     }
 
-
     @Column(name = "last_name", nullable = false, length = 100)
     public String getLastName() {
         return this.lastName;
@@ -90,36 +68,6 @@ public class Users implements java.io.Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-
-    @Column(name = "password", nullable = false, length = 150)
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    @Column(name = "email_id", unique = true, nullable = false, length = 150)
-    public String getEmailId() {
-        return this.emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
-    }
-
-
-    @Column(name = "phone_numner", nullable = false, length = 20)
-    public String getPhoneNumner() {
-        return this.phoneNumner;
-    }
-
-    public void setPhoneNumner(String phoneNumner) {
-        this.phoneNumner = phoneNumner;
     }
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -151,15 +99,7 @@ public class Users implements java.io.Serializable {
         this.addresses = addresses;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles", schema = "public")
-    public List<Roles> getRoleses() {
-        return roleses;
-    }
 
-    public void setRoleses(List<Roles> roleses) {
-        this.roleses = roleses;
-    }
 }
 
 

@@ -14,10 +14,6 @@ public class UserDomain {
     private Integer userId;
     private String firstName;
     private String lastName;
-    private String password;
-    private String emailId;
-    private String phoneNumner;
-
 
 
 }

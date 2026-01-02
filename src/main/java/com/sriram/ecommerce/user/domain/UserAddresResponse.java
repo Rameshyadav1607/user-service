@@ -12,7 +12,5 @@ public class UserAddresResponse {
     private Integer userId;
     private String firstName;
     private String lastName;
-    private String emailId;
-    private String phoneNumner;
     private List<UserAddressDomain> userAddressDomainList;
 }

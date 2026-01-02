@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.util.List;
 
 @Service
 public class UserAddresService {
@@ -53,7 +53,7 @@ public class UserAddresService {
         BeanUtils.copyProperties(address, resposne);
         return resposne;
     }
-
+    @Transactional
     public String setDefaultAddress(Integer userId, Integer addressId) {
         UserAddress address = userAddressRepository.findByAddressId(addressId)
                 .orElseThrow(()->new ResourceNotFoundException("addressId not found :"+addressId));
@@ -61,6 +61,7 @@ public class UserAddresService {
                 .orElseThrow(()->new ResourceNotFoundException("user not found :"+userId));
         usersRepository.resetDefaultAddressByUserId(userId);
         address.setIsDefault(true);
+        userAddressRepository.save(address);
         return "default address set successfully";
     }
 }
